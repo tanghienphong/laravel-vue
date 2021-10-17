@@ -20,6 +20,15 @@ window.Vue = require('vue').default;
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+Vue.component('my-component', require('./components/learning/MyComponent.vue').default);
+Vue.component('main-menu', require('./components/MainMenuComponent.vue').default);
+Vue.component('footer-wrap', require('./components/FooterComponent.vue').default);
+Vue.component('category', require('./components/CategoryComponent.vue').default);
+Vue.component('list-rendering', require('./components/learning/ListRendering.vue').default);
+Vue.component('user-dashboard', require('./components/learning/UserDashboard.vue').default);
+Vue.component('binding-html', require('./components/learning/BindingHTML.vue').default);
+Vue.component('event-handling', require('./components/learning/EventHandling.vue').default);
+Vue.component('api-calling', require('./components/learning/ApiCalling.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

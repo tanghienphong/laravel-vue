@@ -17,6 +17,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('/laptop', function () {
+    return view('laptop');
+});
+
+Route::get('/user-dashboard', function () {
+    return view('learning.demo-user');
+});
+
+Route::get('/learning', function () {
+    return view('learning.learning');
+});
+
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
