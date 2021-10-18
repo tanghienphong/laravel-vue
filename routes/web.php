@@ -13,9 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [\App\Http\Controllers\FrontEndController::class, 'index'])->name('front-end');
+Route::get('/{category}', '\App\Http\Controllers\FrontEndController@category')->name('front-end.category');
 
 Route::get('/laptop', function () {
     return view('laptop');

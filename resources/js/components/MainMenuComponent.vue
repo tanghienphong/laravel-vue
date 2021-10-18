@@ -1,13 +1,25 @@
 <template>
-    <nav class="navbar navbar-expand-lg navbar-light bg-yellow">
-        <div class="container px-4 px-lg-5">
-            <a class="navbar-brand" href="#!">Web Demo</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span>
+    <nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#main_nav"
+                    aria-controls="main_nav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+
+            <div class="collapse navbar-collapse" id="main_nav">
+                <ul class="navbar-nav">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link pl-0" data-toggle="dropdown" href="#"><strong> <i class="fa fa-bars"></i>
+                            &nbsp; All category</strong></a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Foods and Drink</a>
+                            <a class="dropdown-item" href="#">Home interior</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Category 1</a>
+                            <a class="dropdown-item" href="#">Category 2</a>
+                            <a class="dropdown-item" href="#">Category 3</a>
+                        </div>
+                    </li>
                     <li class="nav-item" v-for="menuItm in menus" :key="menuItm.id">
                         <a v-if="menuItm.id == 1" class="nav-link active" aria-current="page" :href="menuItm.slug">
                             <i class="bi bi-phone"></i> {{ menuItm.title }}
@@ -17,9 +29,10 @@
                         </a>
                     </li>
                 </ul>
-            </div>
-        </div>
+            </div> <!-- collapse .// -->
+        </div> <!-- container .// -->
     </nav>
+
 </template>
 
 <script>
@@ -33,13 +46,13 @@
         mounted() {
             this.getMenus();
         },
-        created(){
+        created() {
             console.log(this.menus)
         },
         methods: {
             async getMenus() {
                 try {
-                    const ressponse = await fetch("http://laravel-vue.local/api/category");
+                    const ressponse = await fetch("http://laravel-vue.local/api/categories");
                     const data = await ressponse.json();
                     this.menus = data;
                 } catch (e) {

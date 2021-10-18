@@ -1,33 +1,113 @@
 <template>
-    <div class="card card-body mt-3">
-        <div class="media align-items-center align-items-lg-start text-center text-lg-left flex-column flex-lg-row">
-            <div class="mr-2 mb-3 mb-lg-0"> <img src="https://i.imgur.com/Aj0L4Wa.jpg" width="150" height="150" alt=""> </div>
-            <div class="media-body">
-                <h6 class="media-title font-weight-semibold"> <a href="#" data-abc="true">Apple iPhone XS Max (Gold, 64 GB)</a> </h6>
-                <ul class="list-inline list-inline-dotted mb-3 mb-lg-2">
-                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Phones</a></li>
-                    <li class="list-inline-item"><a href="#" class="text-muted" data-abc="true">Mobiles</a></li>
-                </ul>
-                <p class="mb-3">256 GB ROM | 15.49 cm (6.1 inch) Display 12MP Rear Camera | 15MP Front Camera A12 Bionic Chip Processor | Gorilla Glass with high quality display </p>
-                <ul class="list-inline list-inline-dotted mb-0">
-                    <li class="list-inline-item">All items from <a href="#" data-abc="true">Mobile junction</a></li>
-                    <li class="list-inline-item">Add to <a href="#" data-abc="true">wishlist</a></li>
-                </ul>
+    <section>
+            <div class="mb-3" v-for="(product, index) in productList" :key="product.id">
+                <article class="card card-product-list">
+                    <div class="row no-gutters">
+                        <aside class="col-md-3">
+                            <a href="#" class="img-wrap">
+                                <span class="badge badge-danger"> NEW </span>
+                                <img :src="product.image">
+                            </a>
+                        </aside> <!-- col.// -->
+                        <div class="col-md-6">
+                            <div class="info-main">
+                                <a href="#" class="h5 title">{{product.name}}</a>
+                                <div class="rating-wrap mb-3">
+                                    <ul class="rating-stars">
+                                        <li style="width:80%" class="stars-active">
+                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                        <li>
+                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                                            <i class="fa fa-star"></i>
+                                        </li>
+                                    </ul>
+                                    <div class="label-rating">7/10</div>
+                                </div> <!-- rating-wrap.// -->
+
+                                <p v-if="product.teaser"> {{product.teaser}}</p>
+                            </div> <!-- info-main.// -->
+                        </div> <!-- col.// -->
+                        <aside class="col-sm-3">
+                            <div class="info-aside">
+                                <div class="price-wrap">
+                                    <span class="price h5"> {{actualPrice(product)}} </span>
+                                    <br v-show="discountPrice(product)"/>
+                                    <del class="price-old" v-show="discountPrice(product)"> {{discountPrice(product)}}
+                                    </del>
+                                </div> <!-- info-price-detail // -->
+                                <p class="text-success">Free shipping</p>
+                                <br>
+                                <p>
+                                    <a href="#" class="btn btn-primary btn-block"> Details </a>
+                                    <a href="#" class="btn btn-light btn-block"><i class="fa fa-heart"></i>
+                                        <span class="text">Add to wishlist</span>
+                                    </a>
+                                </p>
+                            </div> <!-- info-aside.// -->
+                        </aside> <!-- col.// -->
+                    </div> <!-- row.// -->
+                </article> <!-- card-product .// -->
             </div>
-            <div class="mt-3 mt-lg-0 ml-lg-3 text-center">
-                <h3 class="mb-0 font-weight-semibold">$612.99</h3>
-                <div> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-                <div class="text-muted">2349 reviews</div> <button type="button" class="btn btn-warning mt-4 text-white"><i class="icon-cart-add mr-2"></i> Add to cart</button>
-            </div>
-        </div>
-    </div>
+    </section>
 </template>
 
 <script>
     export default {
         name: "product-list",
+        props: {
+            productList: {},
+            // formatPrice: Intl.NumberFormat(),
+        },
+        methods: {
+            formatPrice(x) {
+                var nf = Intl.NumberFormat();
+                return nf.format(x) + ' VND';
+            },
+            actualPrice(product) {
+                return this.formatPrice(parseInt(product.price - product.discount));
+            },
+            discountPrice(product) {
+                if (parseInt(product.discount) > 0) {
+                    return this.formatPrice(parseInt(product.price));
+                } else {
+                    return "";
+                }
+            }
+        },
+        watch: {
+            productList() {
+                console.log('productList imported!')
+            }
+        },
         mounted() {
-            console.log('Component mounted.')
+            console.log('Component product-list mounted.')
         }
     }
 </script>
+<style lang="scss" scoped>
+    .fade-enter-active, .fade-leave-active {
+        transition: opacity .5s;
+    }
+
+    .fade-enter, .fade-leave-to {
+        opacity: 0;
+    }
+
+    // ------ THÊM VÀO ĐOẠN BÊN DƯỚI
+    .slide-fade-enter-active {
+        transition: all .3s ease;
+    }
+
+    .slide-fade-leave-active {
+        transition: all .8s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+    }
+
+    .slide-fade-enter, .slide-fade-leave-to {
+        transform: translateX(10px);
+        opacity: 0;
+    }
+</style>

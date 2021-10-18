@@ -20,13 +20,14 @@ class CreateProductsTable extends Migration
             $table->integer('category_id')->default("0")->nullable()->unsigned();
             $table->text('name');
             $table->string('sku', 20)->nullable();
-            $table->string('tiki_pid', 20)->nullable();
             $table->text('slug')->nullable();
             $table->text('teaser')->nullable();
             $table->text('description')->nullable();
             $table->string('image', 255)->nullable();
             $table->tinyInteger('status')->default("0");
             $table->tinyInteger('sort_order')->default("0");
+            $table->tinyInteger('price')->default("0");
+            $table->tinyInteger('discount')->default("0");
             $table->string('meta_title', 255)->nullable();
             $table->string('meta_keyword', 255)->nullable();
             $table->text('meta_description')->nullable();
