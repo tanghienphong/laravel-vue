@@ -2,9 +2,9 @@
     <div class="row">
         <div :class="itemPerRow(col)" v-for="product in productGirds">
             <figure class="card card-product-grid card-lg">
-                <a href="#" class="img-wrap"><img class="img-fluid" :src="product.image"></a>
+                <a :href="product.slug + '.html'" class="img-wrap" :title="product.name"><img class="img-fluid" :src="product.image"></a>
                 <figcaption class="info-wrap">
-                    <a href="#" class="title">{{product.name}}</a>
+                    <a :href="product.slug + '.html'" class="title" :title="product.name">{{product.name}}</a>
                     <div class="rating-wrap">
                         <ul class="rating-stars">
                             <li style="width:80%" class="stars-active">

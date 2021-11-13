@@ -4,14 +4,14 @@
                 <article class="card card-product-list">
                     <div class="row no-gutters">
                         <aside class="col-md-3">
-                            <a href="#" class="img-wrap">
+                            <a :href="product.slug" class="img-wrap">
                                 <span class="badge badge-danger"> NEW </span>
                                 <img :src="product.image">
                             </a>
                         </aside> <!-- col.// -->
                         <div class="col-md-6">
                             <div class="info-main">
-                                <a href="#" class="h5 title">{{product.name}}</a>
+                                <a :href="product.slug" class="h5 title">{{product.name}}</a>
                                 <div class="rating-wrap mb-3">
                                     <ul class="rating-stars">
                                         <li style="width:80%" class="stars-active">
@@ -42,7 +42,7 @@
                                 <p class="text-success">Free shipping</p>
                                 <br>
                                 <p>
-                                    <a href="#" class="btn btn-primary btn-block"> Details </a>
+                                    <a :href="product.slug" class="btn btn-primary btn-block"> Details </a>
                                     <a href="#" class="btn btn-light btn-block"><i class="fa fa-heart"></i>
                                         <span class="text">Add to wishlist</span>
                                     </a>

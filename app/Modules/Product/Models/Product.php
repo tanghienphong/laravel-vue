@@ -48,7 +48,7 @@ class Product extends Model
         return [
             'category_id' => 'bail|required|numeric|digits_between:0,11',
             'name' => 'bail|required|unique:' . $this->table . ',name,' . $this->id . '|max:255',
-//            'slug' => 'bail|required|unique:' . $this->table . ',slug,' . $this->id . '|max:255',
+            //            'slug' => 'bail|required|unique:' . $this->table . ',slug,' . $this->id . '|max:255',
             'slug' => 'bail|max:255',
             'sku' => 'bail|max:255',
             'image' => 'bail|max:255',
@@ -57,5 +57,10 @@ class Product extends Model
             'meta_title' => 'bail|max:255',
             'meta_keyword' => 'bail|max:255',
         ];
+    }
+
+    public function category()
+    {
+        return $this->hasOne('App\Modules\Product\Models\Category', 'id');
     }
 }

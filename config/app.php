@@ -179,6 +179,7 @@ return [
          * Custom Service Providers...
          */
         'App\Modules\ServiceProvider',
+        Torann\LaravelMetaTags\MetaTagsServiceProvider::class,
     ],
 
     /*
@@ -232,6 +233,8 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
+
+        'MetaTag'   => Torann\LaravelMetaTags\Facades\MetaTag::class,
 
     ],
 

@@ -24,7 +24,9 @@ Vue.component('footer-wrap', require('./components/FooterComponent.vue').default
 Vue.component('category', require('./components/CategoryComponent.vue').default);
 Vue.component('product-gird',require('./components/ProductGirdComponent.vue').default);
 Vue.component('product-list',require('./components/ProductListComponent.vue').default);
+Vue.component('product-detail',require('./components/ProductDetailComponent.vue').default);
 Vue.component('popular-product',require('./components/PopularProductComponent.vue').default);
+Vue.component('filter-brand',require('./components/filter/BrandComponent.vue').default);
 
 
 /**

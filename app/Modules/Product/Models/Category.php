@@ -58,16 +58,16 @@ class Category extends Model
     public function attributes()
     {
         return [
-//            'parent_id' => trans('chotdealproduct::msg_category.lbl_parent_id'),
-//            'image' => trans('chotdealproduct::msg_category.lbl_image'),
-//            'sort_order' => trans('chotdealproduct::msg_category.lbl_sort_order'),
-//            'status' => trans('chotdealproduct::msg_category.lbl_status'),
-//            'title' => trans('chotdealproduct::msg_category.lbl_title'),
-//            'slug' => trans('chotdealproduct::msg_category.lbl_slug'),
-//            'description' => trans('chotdealproduct::msg_category.lbl_description'),
-//            'meta_title' => trans('chotdealproduct::msg_category.lbl_meta_title'),
-//            'meta_keyword' => trans('chotdealproduct::msg_category.lbl_meta_keyword'),
-//            'meta_description' => trans('chotdealproduct::msg_category.lbl_meta_description'),
+            //            'parent_id' => trans('chotdealproduct::msg_category.lbl_parent_id'),
+            //            'image' => trans('chotdealproduct::msg_category.lbl_image'),
+            //            'sort_order' => trans('chotdealproduct::msg_category.lbl_sort_order'),
+            //            'status' => trans('chotdealproduct::msg_category.lbl_status'),
+            //            'title' => trans('chotdealproduct::msg_category.lbl_title'),
+            //            'slug' => trans('chotdealproduct::msg_category.lbl_slug'),
+            //            'description' => trans('chotdealproduct::msg_category.lbl_description'),
+            //            'meta_title' => trans('chotdealproduct::msg_category.lbl_meta_title'),
+            //            'meta_keyword' => trans('chotdealproduct::msg_category.lbl_meta_keyword'),
+            //            'meta_description' => trans('chotdealproduct::msg_category.lbl_meta_description'),
         ];
     }
 
@@ -90,6 +90,6 @@ class Category extends Model
 
     public function products()
     {
-//        return $this->hasMany('App\Modules\ChotDealProduct\Models\Product');
+        return $this->hasMany('App\Modules\Product\Models\Product');
     }
 }
